@@ -41,13 +41,14 @@ public:
     IntPoint2 getP2(){return p2;}
     void setP1(IntPoint2 p){p1 = p;}
     void setP2(IntPoint2 p){p2 = p;}
+
     int Intersects(IntLine L, double e = 0.00001){
         // return 0 if strict parallel, 1 if there is a one point intersection, 2 if the same line
         IntPoint2 V1 = p2-p1;
-        IntPoint2 V2 = L.getP2() - L.getP2();
-        if(abs(V1.x()/V2.x() - V1.y()/V2.y()) < e ){
+        IntPoint2 V2 = L.getP2() - L.getP1();
+        if(abs(V1.x()*V2.y() - V1.y()*V2.x()) < e ){
             IntPoint2 V3 = L.getP2() - p1;
-            if(abs(V1.x()/V3.x() - V1.y()/V3.y()) < e)
+            if(abs(V1.x()*V3.y() - V1.y()*V3.x()) < e)
                 return 2;
             else
                 return 0;
