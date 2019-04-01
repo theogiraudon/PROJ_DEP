@@ -2,6 +2,8 @@
 #include <cstdlib>
 #include "Imagine/Graphics.h"
 #include "Imagine/Images.h"
+#include "geometry.h"
+
 using namespace std;
 using namespace Imagine;
 
@@ -32,6 +34,7 @@ int main(int argc, char* argv[])
         getMouse(x0,y0);
         fillCircle(x0,y0,4,RED);
     }
+
 
         endGraphics();
         return 0;
