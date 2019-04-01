@@ -4,8 +4,28 @@
 #include "Imagine/Images.h"
 #include <Imagine/LinAlg.h>
 using namespace Imagine;
+using namespace std;
 
+class IntPlane{
+private:
+    IntPoint2 p1,p2,p3;
+public:
+    IntPlane();
+    IntPlane(IntPoint2 P1, IntPoint2 P2, IntPoint2 P3){
+        p1 = P1;
+        p2 = P2;
+        p3 = P3;
+    }
 
+    IntPoint2 getP1(){return p1;}
+    IntPoint2 getP2(){return p2;}
+    IntPoint2 getP3(){return p3;}
+
+    void setP1(IntPoint2 p){p1 = p;}
+    void setP2(IntPoint2 p){p2 = p;}
+    void setP3(IntPoint2 p){p3 = p;}
+
+};
 
 class IntLine{
 private:
@@ -43,17 +63,17 @@ public:
             IntPoint2 V2 = L.p1 - L.p2;
             IntPoint2 V3 = L.p1 - p1;
 
-            Vector<int> Y(2);
-            Y(0) = V3.x();
-            Y(1) = V3.y();
+            Vector<double> Y(2);
+            Y[0] = V3.x();
+            Y[1] = V3.y();
 
-            Matrix< int > M = Matrix<int>(2,2);
+            Matrix< double > M = Matrix<double>(2,2);
             M(0,0) = V1.x();
             M(0,1) = - V2.x();
             M(1,0) = V1.y();
             M(1,1) = - V2.y();
             Vector<double> X = linSolve(M,Y);
-            return p1 + int(X(0))*(p1-p2);
+            return p1 + int(X[0])*(p1-p2);
         }
         else{
             return IntPoint2(0, 0);
@@ -73,7 +93,7 @@ IntPoint2 Find_V_point(){
     cout<<"To select the second line... Press with the mouse 2 points in this line"<<endl;
     getMouse(P3);
     getMouse(P4);
-    IntLine L1 = IntLine(P1,P2);
+    IntLine L2 = IntLine(P1,P2);
 
     IntPoint2 V = L1.Intersection(L2);
     return V;
@@ -83,10 +103,23 @@ double d(IntPoint2 P1, IntPoint2 P2){
     return sqrt((P2-P1).x()*(P2-P1).x() + (P2-P1).y()*(P2-P1).y());
 }
 
-double Hight3(Intpoint2 Vh, Intpoint2 X, Intpoint2 Xp, Intpoint2 I, IntPoint2 C, double X_Xp_real){
-    // on doit avoir l'ordre Xp.y<X.y  Xp.x = X.x et I.x=C.x et C.y<I.y
+double Hight3(IntPoint2 Vh, IntPoint2 X, IntPoint2 Xp, IntPoint2 I, IntPoint2 C, double X_Xp_real){
+    // on doit avoir l'ordre Xp.y<X.y  Xp.x = X.x et I.x=C.x et C.y<I.y et C.x=X.x
     double q = (d(X,Xp) * d(Xp,Vh)) / (d(Xp,C)*d(X,Vh));
-    return X_Xp_real/(q-1); // returns XpC
+    return X_Xp_real/(q-1); // returns XpC == CI reel
+}
+
+double Hight_advanced(IntLine VL, IntPoint2 Vh, IntPoint2 X, IntPoint2 Xp, IntPoint2 I, IntPoint2 C, double X_Xp_real){
+    // on doit avoir l'ordre Xp.y<X.y  Xp.x = X.x et I.x=C.x et C.y<I.y et (C.x=X.x)
+    // X et I on la meme z dans le monde reel
+
+    // on calcul le vanishing point intermediaire
+    IntPoint2 Vi = VL.Intersection(IntLine(X,I));
+
+    // On calcul le point Cp image de C dans XXp
+    IntPoint2 Cp = IntLine(Vi,C).Intersection(IntLine(X,Xp));
+
+    return Hight3(Vh, X, Xp, X, Cp, X_Xp_real); //return CI reel
 }
 
 
