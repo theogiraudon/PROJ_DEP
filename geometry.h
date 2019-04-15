@@ -89,12 +89,18 @@ IntPoint2 Find_V_point(){
     cout<<"Select 2 parallel lines"<<endl;
     cout<<"To select the first line... Press with the mouse 2 points in this line"<<endl;
     getMouse(P1);
+    drawPoint(P1, RED, 5);
     getMouse(P2);
+    drawPoint(P2, RED, 5);
     IntLine L1 = IntLine(P1,P2);
+    drawLine(P1, P2, GREEN, 2);
     cout<<"To select the second line... Press with the mouse 2 points in this line"<<endl;
     getMouse(P3);
+    drawPoint(P3, RED, 5);
     getMouse(P4);
+    drawPoint(P4, RED, 5);
     IntLine L2 = IntLine(P3,P4);
+    drawLine(P3, P4, GREEN, 2);
 
     IntPoint2 V = L1.Intersection(L2);
     return V;
@@ -105,7 +111,7 @@ double d(IntPoint2 P1, IntPoint2 P2){
 }
 
 double Hight3(IntPoint2 Vh, IntPoint2 X, IntPoint2 Xp, IntPoint2 I, IntPoint2 C, double X_Xp_real){
-    // on doit avoir l'ordre Xp.y<X.y  Xp.x = X.x et I.x=C.x et C.y<I.y et C.x=X.x
+    // on doit avoir l'ordre Xp.y<X.y  Xp.x = X.x et I.x=C.x et C.y<I.y et C.x=X.x in the real 3D world
     double q = (d(X,Xp) * d(Xp,Vh)) / (d(Xp,C)*d(X,Vh));
     return X_Xp_real/(q-1); // returns XpC == CI reel
 }

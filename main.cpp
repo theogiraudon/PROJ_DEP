@@ -9,12 +9,48 @@ using namespace Imagine;
 
 int main(int argc, char* argv[])
 {
-    Image<byte> I;
-    load(I,srcPath("cube.jpg"));
-    openWindow(I.width(), I.height());
-    display(I);
-    IntPoint2 V = Find_V_point();
-    cout<<V<<endl;
+    Image<byte> img;
+    load(img,srcPath("cube.jpg"));
+    openWindow(img.width(), img.height());
+    display(img);
+    IntPoint2 V1 = Find_V_point();
+    cout<<V1<<endl;
+    IntPoint2 V2 = Find_V_point();
+    cout<<V2<<endl;
+    drawLine(V1,V2,RED);
+    IntLine VL(V1,V2);
+
+    IntPoint2 Vh = Find_V_point();
+    cout<<Vh<<endl;
+
+    IntPoint2 X, Xp, I, C;
+    double X_Xp_real;
+
+    cout<<"Enter X"<<endl;
+    getMouse(X);
+    drawPoint(X, RED, 5);
+
+    cout<<"Enter Xp"<<endl;
+    getMouse(Xp);
+    drawPoint(Xp, RED, 5);
+
+    cout<<"Enter I"<<endl;
+    getMouse(I);
+    drawPoint(I, RED, 5);
+
+    cout<<"Enter C"<<endl;
+    getMouse(C);
+    drawPoint(C, RED, 5);
+
+    cout<<"Enter the distance X_Xp in the real 3D world"<<endl;
+    cin>>X_Xp_real;
+
+    cout<<"the distance C_I in the real 3D world is : "<<Hight3(Vh, X, Xp, I, C, X_Xp_real)<<endl;
+
+    endGraphics();
+
+
+
 
 
 

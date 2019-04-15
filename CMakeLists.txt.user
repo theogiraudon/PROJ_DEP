@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.0.2, 2019-04-01T16:33:17. -->
+<!-- Written by QtCreator 4.0.2, 2019-04-15T15:12:02. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -340,6 +340,7 @@
     </valuelist>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">Photogrammetry</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
+    <value type="bool" key="CMakeProjectManager.CMakeRunConfiguration.UseTerminal">true</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">C:/Users/cyberland/Contacts/Desktop/build-PROJ_DEP-Desktop_Qt_5_7_0_MinGW_32bit-Default</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
