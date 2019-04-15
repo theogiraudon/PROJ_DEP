@@ -25,16 +25,17 @@ int main(int argc, char* argv[])
 
     IntPoint2 X, Xp, I, C;
     double X_Xp_real;
-    //the Points should be in this order 
-    //and vertically aligned: 
+    //the Points should be vertically aligned 
+    // such that 
     //..............
     //.......C......
     //..............
     //.......I......
-    //..............
+    // and : 
     //.......Xp.....
     //..............
     //.......X......
+    
 
     cout<<"Enter X"<<endl;
     getMouse(X);
@@ -56,6 +57,7 @@ int main(int argc, char* argv[])
     cin>>X_Xp_real;
 
     cout<<"the distance C_I in the real 3D world is : "<<Hight3(Vh, X, Xp, I, C, X_Xp_real)<<endl;
+    //cout<<"the distance C_I in the real 3D world is : "<<Hight_advanced(VL, Vh, X, Xp, I, C, X_Xp_real)<<endl;
 
     endGraphics();
 
