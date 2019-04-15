@@ -94,7 +94,7 @@ IntPoint2 Find_V_point(){
     cout<<"To select the second line... Press with the mouse 2 points in this line"<<endl;
     getMouse(P3);
     getMouse(P4);
-    IntLine L2 = IntLine(P1,P2);
+    IntLine L2 = IntLine(P3,P4);
 
     IntPoint2 V = L1.Intersection(L2);
     return V;
@@ -121,6 +121,7 @@ double Hight_advanced(IntLine VL, IntPoint2 Vh, IntPoint2 X, IntPoint2 Xp, IntPo
     IntPoint2 Cp = IntLine(Vi,C).Intersection(IntLine(X,Xp));
 
     return Hight3(Vh, X, Xp, X, Cp, X_Xp_real); //return CI reel
+
 }
 
 

@@ -9,10 +9,16 @@ using namespace Imagine;
 
 int main(int argc, char* argv[])
 {
-    IntPoint2 P1(0,0);
-    IntLine L1(IntPoint2(1,2), IntPoint2(1,1));
-    IntLine L2(IntPoint2(0,0), IntPoint2(1,2));
-    cout<< L1.Intersection(L2)<<endl;
+    Image<byte> I;
+    load(I,srcPath("cube.jpg"));
+    openWindow(I.width(), I.height());
+    display(I);
+    IntPoint2 V = Find_V_point();
+    cout<<V<<endl;
+
+
+
+    //cout<< <<endl;
 
 //    srand (time(NULL));
 
