@@ -112,7 +112,8 @@ double d(IntPoint2 P1, IntPoint2 P2){
 
 double Hight3(IntPoint2 Vh, IntPoint2 X, IntPoint2 Xp, IntPoint2 I, IntPoint2 C, double X_Xp_real){
     // on doit avoir l'ordre Xp.y<X.y  Xp.x = X.x et I.x=C.x et C.y<I.y et C.x=X.x in the real 3D world
-    double q = (d(X,Xp) * d(Xp,Vh)) / (d(Xp,C)*d(X,Vh));
+    IntPoint2 Cp = C - I + Xp;
+    double q = (d(X,Cp) * d(Xp,Vh)) / (d(Xp,Cp)*d(X,Vh));
     return X_Xp_real/(q-1); // returns XpC == CI reel
 }
 
